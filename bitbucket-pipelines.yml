@@ -4,6 +4,8 @@ clone:
 pipelines:
   default:
     - step:
+        name: Deploy to Heroku
+        deployment: test   # set to test, staging or production
         script:
           - npm install
           - npm test
