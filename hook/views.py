@@ -8,10 +8,11 @@ def hello(request):
 
 def hookck(request):
     hub_verify_token = "284621548815052"
-    #return HttpResponse(validation_code)
+    
     if request.method == 'POST':
-        if request.POST("hub_verify_token"):
-            if request.POST("hub_verify_token") == hub_verify_token:
+        #check facebook verify token
+        if request.POST["hub_verify_token"]:
+            if request.POST["hub_verify_token"] == hub_verify_token:
                 return HttpResponse(request.POST['hub_challenge'])
             else:
                 return HttpResponse("failed")
