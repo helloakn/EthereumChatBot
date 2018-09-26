@@ -24,5 +24,11 @@ def hookck(request):
             return HttpResponse(requestData['hub.challenge'])
         else:
             return HttpResponse("failed")
+    ## End check facebook verify token
     else:
-        return HttpResponse("This is request")
+        #Handle Fb Chat 
+        senderId = requestData['entry'][0]['messaging'][0]['sender']['id']
+        messageText = requestData['entry'][0]['messaging'][0]['message']['text']
+        response = None
+        return HttpResponse(senderId)
+        ## End Handle Fb Chat 
