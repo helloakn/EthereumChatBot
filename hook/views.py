@@ -7,7 +7,7 @@ def hello(request):
    return HttpResponse(text)
 
 def hookck(request):
-    hub_verify_token = "284621548815052"
+    hub_verify_token = "sha1=284621548815052284621548815052"
     
     if request.method == 'POST':
         #check facebook verify token
