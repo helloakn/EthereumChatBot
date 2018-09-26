@@ -3,12 +3,16 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
+
 image: python:3.6
 
 pipelines:
   default:
     - step:
-        caches:
-          - pip
-        script: # Modify the commands below to build your repository.
-          - pip install -r requirements.txt
+      # set HEROKU_API_KEY and HEROKU_APP_NAME environment variables
+      # set clone `depth: full' as described here: https://confluence.atlassian.com/x/Y9-5Mw
+      name: Deploy to Heroku
+      deployment: test   # set to test, staging or production
+      # trigger: manual  # uncomment to have a manual step
+      script:
+        - git push https://heroku:d377ed7d-9619-42c2-b6f4-6641efe5233f@git.heroku.com/ethchatbot.git HEAD
