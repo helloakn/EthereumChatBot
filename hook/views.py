@@ -14,9 +14,14 @@ def hookck(request):
     else:
         requestData = request.GET
     #check facebook verify token
-    if requestData["hub_verify_token"]:
+    if 'hub_verify_token' in requestData:
         if requestData["hub_verify_token"] == hub_verify_token:
             return HttpResponse(requestData['hub_challenge'])
+        else:
+            return HttpResponse("failed")
+    elif 'hub.verify_token' in requestData:
+        if requestData["hub.verify_token"] == hub_verify_token:
+            return HttpResponse(requestData['hub.challenge'])
         else:
             return HttpResponse("failed")
     else:
