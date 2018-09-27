@@ -1,0 +1,10 @@
+- name: Install Flask -> pip install
+  command: "{{ item }}"
+  ignore_errors: yes
+  with_items:
+    - ls
+    - pwd
+    - echo "haha" > /tmp/ansible.txt
+  register: installphp
+- debug:
+    var: installphp.stdout.split('\n')

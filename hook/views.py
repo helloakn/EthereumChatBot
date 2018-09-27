@@ -27,8 +27,8 @@ def hookck(request):
     ## End check facebook verify token
     else:
         #Handle Fb Chat 
-        senderId = requestData['entry'][0]['messaging'][0]['sender']['id']
-        messageText = requestData['entry'][0]['messaging'][0]['message']['text']
-        response = None
+        #senderId = requestData['entry'][0]['messaging'][0]['sender']['id']
+        #messageText = requestData['entry'][0]['messaging'][0]['message']['text']
+        #response = None
         return HttpResponse(senderId)
         ## End Handle Fb Chat 

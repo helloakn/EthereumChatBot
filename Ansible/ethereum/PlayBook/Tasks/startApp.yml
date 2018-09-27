@@ -1,0 +1,9 @@
+
+- name: StartPython
+  command: python3.6 app.py & .
+  args:
+      chdir: "/var/www/html/python"
+  register: startPython
+- debug:
+    var: startPython.stdout.split('\n')
+

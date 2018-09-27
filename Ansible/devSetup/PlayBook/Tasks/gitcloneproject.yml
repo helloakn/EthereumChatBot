@@ -1,0 +1,197 @@
+#ssh -i ~/.ssh/id_rsa git@git.rooking.co.jp
+- name: make directory for api
+  command: mkdir "{{ doc_root }}/api"
+  args:
+      chdir: "{{ doc_root }}"
+
+- name: Setup the Git repo
+  sudo: no
+  git: repo=git@git.rooking.co.jp:koolpon/api.git dest="{{ doc_root }}/api" accept_hostkey=yes
+
+ # when: setup_git_repo
+
+- name: git clone for api server
+  command: "{{ item }}"
+  with_items:
+      - git pull origin v2
+  args:
+        chdir: "{{ doc_root }}/api"
+  register: gitclone
+- debug:
+    var: gitclone.stdout.split('\n')
+
+- name: composer install laravel/api
+  composer: command=install working_dir="{{ doc_root }}/api/laravel" optimize_autoloader=no
+
+- name: api chmod
+  command: "{{ item }}"
+  with_items:
+      - chmod 777 storage -R
+      - chmod 777 vendor -R
+      - chmod 777 bootstrap -R
+      - chmod 777 public -R
+  args:
+        chdir: "{{ doc_root }}/api/laravel"
+  register: result
+- debug:
+    var: result.stdout.split('\n')
+
+- name: upload env file
+  template: src=../templates/api-laravel.env dest="{{ doc_root }}/api/laravel/.env"
+#  copy:
+#      src: ../templates/api-laravel.env
+#      dest: "{{ doc_root }}"/api/laravel/.env
+  register: apienvcopy
+- debug:
+    var: apienvcopy.stdout.split('\n')
+
+#----------------------------------------------------------------------------------------------------------
+- name: make directory for web
+  command: mkdir "{{ doc_root }}/web"
+  args:
+      chdir: "{{ doc_root }}"
+
+- name: Setup the Git repo
+  git: repo=git@git.rooking.co.jp:koolpon/web.git dest="{{ doc_root }}/web" accept_hostkey=yes
+ # when: setup_git_repo
+
+- name: git clone for web server
+  command: "{{ item }}"
+  with_items:
+      - git pull origin v2
+  args:
+    chdir: "{{ doc_root }}/web"
+  register: gitclone
+- debug:
+    var: gitclone.stdout.split('\n')
+
+- name: composer install laravel/web
+  composer: command=install working_dir="{{ doc_root }}/web/laravel" optimize_autoloader=no
+
+- name: web chmod
+  command: "{{ item }}"
+  with_items:
+      - chmod 777 storage -R
+      - chmod 777 vendor -R
+      - chmod 777 bootstrap -R
+      - chmod 777 public -R
+  args:
+    chdir: v/web/laravel
+  register: resultweb
+- debug:
+    var: resultweb.stdout.split('\n')
+
+- name: upload env file
+  template: src=../templates/web-laravel.env dest="{{ doc_root }}/web/laravel/.env"
+#  copy:
+#      src: ../templates/web-laravel.env
+#      dest: "{{ doc_root }}"/web/laravel/.env
+  register: webenvcopy
+- debug:
+    var: webenvcopy.stdout.split('\n')
+
+#----------------------------------------------------------------------------------------------------------
+- name: make directory for merchant
+  command: mkdir "{{ doc_root }}/merchant"
+  args:
+      chdir: "{{ doc_root }}"
+
+- name: Setup the Git repo
+  git: repo=git@git.rooking.co.jp:koolpon/merchant.git dest="{{ doc_root }}/merchant" accept_hostkey=yes
+ # when: setup_git_repo
+
+- name: git clone for merchant server
+  command: "{{ item }}"
+  with_items:
+      - git pull origin v2
+  args:
+    chdir: "{{ doc_root }}/merchant"
+  register: gitclonemerchant
+- debug:
+    var: gitclonemerchant.stdout.split('\n')
+
+- name: composer install laravel/merchant
+  composer: command=install working_dir="{{ doc_root }}/merchant/laravel" optimize_autoloader=no
+
+- name: merchant chmod
+  command: "{{ item }}"
+  with_items:
+      - chmod 777 storage -R
+      - chmod 777 vendor -R
+      - chmod 777 bootstrap -R
+      - chmod 777 public -R
+  args:
+        chdir: "{{ doc_root }}/merchant/laravel"
+  register: resultmerchant
+- debug:
+    var: resultmerchant.stdout.split('\n')
+
+- name: upload env file
+  template: src=../templates/merchant-laravel.env dest="{{ doc_root }}/merchant/laravel/.env"
+#  copy:
+#      src: ../templates/merchant-laravel.env.j2
+#      dest: "{{ doc_root }}"/merchant/laravel/.env
+  register: merchantenvcopy
+- debug:
+    var: merchantenvcopy.stdout.split('\n')
+
+#----------------------------------------------------------------------------------------------------------
+- name: make directory for admin
+  command: mkdir "{{ doc_root }}/admin"
+  args:
+      chdir: "{{ doc_root }}"
+
+- name: Setup the Git repo
+  git: repo=git@git.rooking.co.jp:koolpon/admin.git dest="{{ doc_root }}/admin" accept_hostkey=yes
+ # when: setup_git_repo
+
+- name: git clone for admin server
+  command: "{{ item }}"
+  with_items:
+      - git pull origin v2
+  args:
+    chdir: "{{ doc_root }}/admin"
+  register: gitcloneadmin
+- debug:
+    var: gitcloneadmin.stdout.split('\n')
+
+- name: composer install laravel/admin
+  composer: command=install working_dir="{{ doc_root }}/admin/laravel" optimize_autoloader=no
+
+- name: admin chmod
+  command: "{{ item }}"
+  with_items:
+      - chmod 777 storage -R
+      - chmod 777 vendor -R
+      - chmod 777 bootstrap -R
+      - chmod 777 public -R
+  args:
+    chdir: "{{ doc_root }}/admin/laravel"
+  register: resultadmin
+- debug:
+    var: resultadmin.stdout.split('\n')
+
+- name: upload env file
+  template: src=../templates/admin-laravel.env dest="{{ doc_root }}/admin/laravel/.env"
+# copy:
+#      src: ../templates/admin-laravel.env
+#      dest: "{{ doc_root }}"/admin/laravel/.env
+  register: adminenvcopy
+- debug:
+    var: adminenvcopy.stdout.split('\n')
+
+- name: add email for git
+  git_config: name=user.email scope="global" value="{{ gitconfigemail }}"
+#  args:
+#    chdir: "{{ doc_root }}/"
+  register: gitconfigemails
+- debug:
+    var: gitconfigemails.stdout
+
+- name: add name for git
+  git_config: name=user.name scope="global" value="{{ gitconfigname }}"
+ # args:
+ #   chdir: "{{ doc_root }}/"
+  register: gitconfignames
+- debug:
+    var: gitconfignames.stdout

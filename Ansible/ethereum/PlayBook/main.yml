@@ -1,0 +1,23 @@
+---
+
+- hosts: Server1
+  remote_user: admin
+  gather_facts: no
+
+ # sudo: yes
+  vars:
+    known_hosts_file: "~/.ssh/known_hosts"
+
+  tasks:
+ # - name: restore public key
+ #   command: echo '"{{ ssh_public_key }}"' > ~/.ssh/id_rsa.pub
+ #   register: restorepublickey
+ # - debug:
+ #     var: restorepublickey.stdout.split('\n')
+ # - include: Tasks/update-server.yml
+#  - include: Tasks/installation.yml
+#   - include: Tasks/secure-mysql.yml
+  #- include: Tasks/installFlask.yml
+  - include: Tasks/deployProject.yml
+  #- include: Tasks/deployProject.yml
+  

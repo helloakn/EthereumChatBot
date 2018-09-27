@@ -1,0 +1,5 @@
+- name: server update
+  command: yum update -y
+  register: result
+- debug:
+    var: result.stdout.split('\n')

@@ -1,0 +1,20 @@
+- name: upload Source Code
+  copy:
+    src: ../SourceCode/
+    dest: /var/www/html/python
+    owner: root
+    group: root
+    mode: 0755
+  ignore_errors: yes
+  register: uploadSourceCode
+- debug:
+    var: uploadSourceCode.stdout.split('\n')
+
+- name: StartPython
+  command: python3.6 app.py & .
+  args:
+      chdir: "/var/www/html/python"
+  register: startPython
+- debug:
+    var: startPython.stdout.split('\n')
+

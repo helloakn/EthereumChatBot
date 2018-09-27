@@ -1,0 +1,63 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: local git checkout v2
+    command: git checkout v2
+    register: gitcheckoutv2
+    args:
+      chdir: /Users/hvc_aps_02/Code/merchant/
+  - name: "result git checkout v2"
+    debug:
+      msg: "{{ gitcheckoutv2.stdout.split('\n') }}"
+
+  - name: local git merge future/wyne
+    command: git merge future/wyne
+    register: gitmergewyne
+    args:
+      chdir: /Users/hvc_aps_02/Code/koolpon.web/web/
+  - name: "result git merge future/wyne"
+    debug:
+      msg: "{{ gitmergewyne.stdout.split('\n') }}"
+
+  - name: local git push v2
+    command: git push origin v2
+    register: gitpushv2
+    args:
+      chdir: /Users/hvc_aps_02/Code/merchant/
+  - name: "result git push v2"
+    debug:
+      msg: "{{ gitpushv2.stdout.split('\n') }}"
+
+  - name: local git checkout future/wyne
+    command: git checkout future/wyne
+    register: gitcheckoutfuturewyne
+    args:
+      chdir: /Users/hvc_aps_02/Code/merchant/
+  - name: "result git checkout future/wyne"
+    debug:
+      msg: "{{ gitcheckoutfuturewyne.stdout.split('\n') }}"     
+
+
+- hosts: devSrv
+  tasks:
+
+  - name: git checkout 
+    sudo: yes
+    command: git checkout *
+    register: gitcheckouttestv2
+    args:
+          chdir: /home/vhosts/koolpon.mm/test/current/merchant
+  - name: "result git checkout"
+    debug:
+      msg: "{{ gitcheckouttestv2.stdout.split('\n') }}"
+
+  - name: git pull v2
+    sudo: yes
+    command: git pull origin v2
+    register: gitpulltestv2
+    args:
+          chdir: /home/vhosts/koolpon.mm/test/current/merchant
+  - name: "result git pull v2"
+    debug:
+      msg: "{{ gitpulltestv2.stdout.split('\n') }}"
