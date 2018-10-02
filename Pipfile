@@ -5,11 +5,10 @@ verify_ssl = true
 
 
 [packages]
-
+dj-database-url = "*"
 django = "*"
 gunicorn = "*"
 django-heroku = "*"
-dj-database-url = "*"
 
 
 [requires]
