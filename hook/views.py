@@ -7,7 +7,7 @@ def hello(request):
    return HttpResponse(text)
 
 def hookck(request):
-    f = open("logfile.txt", "a")
+    f = open("./logfile.txt", "a")
     f.write("Now the file has one more line!")
     hub_verify_token = "sha1=284621548815052284621548815052"
     requestData = None
@@ -32,5 +32,5 @@ def hookck(request):
         #senderId = requestData['entry'][0]['messaging'][0]['sender']['id']
         #messageText = requestData['entry'][0]['messaging'][0]['message']['text']
         #response = None
-        return HttpResponse(senderId)
+        return HttpResponse("ok")
         ## End Handle Fb Chat 
