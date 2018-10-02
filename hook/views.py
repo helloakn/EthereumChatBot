@@ -7,6 +7,8 @@ def hello(request):
    return HttpResponse(text)
 
 def hookck(request):
+    f = open("logfile.txt", "a")
+    f.write("Now the file has one more line!")
     hub_verify_token = "sha1=284621548815052284621548815052"
     requestData = None
     if request.method == 'POST':
