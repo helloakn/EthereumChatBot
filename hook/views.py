@@ -10,12 +10,14 @@ def hookck(request):
     f = open("/tmp/logfile.txt", "w+")
     f.write("Now the file has one more line!")
     f.close()
+    
     hub_verify_token = "sha1=284621548815052284621548815052"
     requestData = None
     if request.method == 'POST':
         requestData = request.POST
     else:
         requestData = request.GET
+    print(requestData)
     #check facebook verify token
     if 'hub_verify_token' in requestData:
         if requestData["hub_verify_token"] == hub_verify_token:
