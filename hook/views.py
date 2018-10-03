@@ -38,5 +38,19 @@ def hookck(request):
         #response = None
         requestData = json.dumps(requestData)
         print(requestData)
+
+        #starting log
+        import logging
+
+        # Get the top-level logger object
+        log = logging.getLogger()
+
+        # make it print to the console.
+        console = logging.StreamHandler()
+        log.addHandler(console)
+
+        # emit a warning to the puny Humans
+        log.warn(requestData)
+        #ending log
         return HttpResponse(requestData)
         ## End Handle Fb Chat 
