@@ -1,5 +1,6 @@
 #from django.shortcuts import render
 from django.http import HttpResponse
+import json
 
 # Create your views here.
 def hello(request):
@@ -35,5 +36,7 @@ def hookck(request):
         #senderId = requestData['entry'][0]['messaging'][0]['sender']['id']
         #messageText = requestData['entry'][0]['messaging'][0]['message']['text']
         #response = None
-        return HttpResponse("ok")
+        requestData = json.dumps(requestData)
+        print(requestData)
+        return HttpResponse(requestData)
         ## End Handle Fb Chat 
