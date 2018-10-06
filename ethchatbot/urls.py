@@ -14,5 +14,6 @@ import hook.views
 urlpatterns = [
     path('hello', hook.views.hello, name='hello'),
     path('', hook.views.home, name='home'),
+    path('test', hook.views.test, name='test'),
     path('hookck', hook.views.hookck, name='hookck'),
 ]

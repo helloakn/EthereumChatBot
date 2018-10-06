@@ -4,8 +4,21 @@ import json
 from django.template import loader
 import datetime
 from django.shortcuts import render
+
+#ethereum
+    from web3 import Web3, HTTPProvider, IPCProvider, WebsocketProvider
+#end ethereum
+
 #import render
 # Create your views here.
+
+httpProvider = HTTPProvider("https://rinkeby.infura.io/v3/5619f234c1e843a5963b61b3c913f268")
+w3 = Web3(httpProvider)
+
+def test(request):
+   text = """<h1>welcome to a lal haha my app !</h1>"""
+   return HttpResponse(text)
+
 def hello(request):
    text = """<h1>welcome to a lal haha my app !</h1>"""
    return HttpResponse(text)
