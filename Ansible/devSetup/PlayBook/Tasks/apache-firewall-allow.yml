@@ -1,6 +1,0 @@
-- name: allow firewall for apache
-  command: "{{ item }}"
-  with_items:
-    - firewall-cmd --permanent --zone=public --add-service=http
-    - firewall-cmd --permanent --zone=public --add-service=https
-    - firewall-cmd --reload

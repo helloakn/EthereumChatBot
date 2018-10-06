@@ -1,19 +1,22 @@
-from django.conf.urls import include, url
+"""EthChatBot URL Configuration
 
-from django.urls import path
-from django.shortcuts import get_object_or_404, render
-#from django.contrib import admin
-#admin.autodiscover()
-
-import hook.views
-
-# Examples:
-# url(r'^$', 'ethchatbot.views.home', name='home'),
-# url(r'^blog/', include('blog.urls')),
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import include,path
 
 urlpatterns = [
-    path('hello', hook.views.hello, name='hello'),
-    path('', hook.views.home, name='home'),
-    path('test', hook.views.test, name='test'),
-    path('hookck', hook.views.hookck, name='hookck'),
+    path('', include('ETHAPP.urls')),
+    path('admin/', admin.site.urls),
 ]
