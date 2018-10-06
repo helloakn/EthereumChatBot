@@ -9,6 +9,7 @@ dj-database-url = "*"
 django = "*"
 gunicorn = "*"
 django-heroku = "*"
+django-web3-auth = "1.0.3"
 
 
 [requires]

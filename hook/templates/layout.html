@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename = 'img/logo.png') }}" title="myWallet"  type="image/png" sizes="30x30">
+<title>{% block pagetitle %}{% endblock %}</title>
+    {% block cssLink %}{% endblock %}
+</head>
+<body>
+    <div id="particles-js" class="div-loading">
+        <div id="div-loading-message">
+           
+            <div id="div-loading-text">
+                Initialization.....
+            </div>
+        </div>		
+    </div>
+        <div id="div-body">
+                <h1 class="h1Header">.:: {{ pageName }} ::.</h1>
+            <div id="div-left">
+                <div class="menu"> Login </div>
+                <div class="menu"> Create ETH Wallet </div>
+                <div class="menu"> Check Balance </div>
+                <div class="menu"> Send ETH </div>
+                <div class="menu"> Check Transactions </div>
+            </div>
+            <div id="div-right">
+                    
+                    {% block content %}{% endblock %}
+            </div>
+        </div>
+        
+                
+        
+    
+       
+              <style>
+                .h1Header{
+                    background-color:#847cf3;
+                    width:100%;
+                    padding:20px 5px;
+                    color:#fff;
+                    font-size:20px;
+                    text-align:center;
+                    float:left;
+                    border-bottom:1px solid #1a1d1d;
+                }
+                .menu{
+                    width:100%;
+                    font-size:20px;
+                    text-align:center;
+                    padding:50px 5px;
+                    margin-top:1px;
+                    border-bottom:1px solid #1a1d1d;
+                    color:#fff;
+                    cursor:pointer;
+                }
+
+                .menu:hover{
+                    color:#000;
+                    background-color:#d9d7f5;
+                }
+        #div-body{
+            width:100%;
+            height:100%;
+            background-color:#a19bf7;
+        }
+
+        #div-left{
+            float:left;
+            width:25%;
+            height:100%;
+
+        }
+        #div-right{
+            float:left;
+            width:75%;
+            height:100%;
+            background-color:#d9d7f5;
+
+        }
+       #particles-js{
+		width:100%;
+		position:fixed;
+		height:100%;
+		background-color:#a6ade7;
+		z-index: 2000;
+		opacity: 0.7;
+    	filter: alpha(opacity=50);
+    	 vertical-align: middle;
+  content: "\e000";
+  font-family: "demo";
+	}
+	
+	#div-loading-message{
+		 position: absolute;
+		  top: 50%;
+		  bottom: 0;
+		  left: 0;
+		  right: 0;
+		  margin: -3.9375rem auto 0;
+		  color: #1a1d1d;
+		  text-align: center;
+		   vertical-align: middle;
+  content: "\e000";
+  font-family: "demo";
+	}
+	#div-loading-text{
+		 font-size: 16px;
+		  line-height: 1.3125rem;
+		  text-shadow: #000000 0 0 0.1em, white 0 0 0.5em, white 0 0 0.25em;
+		  position: relative;
+		  display: block;
+		  text-transform: uppercase;
+		  font-weight: bold;
+		  color:#000000;
+		  
+		  vertical-align: middle;
+  content: "\e000";
+  font-family: "demo";
+    }
+       
+</style>
+</body>
+
+    {% block jsLink %}{% endblock %}
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'js/default/particles.js') }}" ></script>
+    
+<script>
+  
+  particlesJS('particles-js',
+  
+  {
+    "particles": {
+      "number": {
+        "value": 80,
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": "#ffffff"
+      },
+      "shape": {
+        "type": "circle",
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        },
+        "polygon": {
+          "nb_sides": 5
+        },
+        "image": {
+          "src": "img/github.svg",
+          "width": 100,
+          "height": 100
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": false,
+        "anim": {
+          "enable": false,
+          "speed": 1,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 5,
+        "random": true,
+        "anim": {
+          "enable": false,
+          "speed": 40,
+          "size_min": 0.1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 6,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "repulse"
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push"
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 400,
+          "line_linked": {
+            "opacity": 1
+          }
+        },
+        "bubble": {
+          "distance": 400,
+          "size": 40,
+          "duration": 2,
+          "opacity": 8,
+          "speed": 3
+        },
+        "repulse": {
+          "distance": 200
+        },
+        "push": {
+          "particles_nb": 4
+        },
+        "remove": {
+          "particles_nb": 2
+        }
+      }
+    },
+    "retina_detect": true,
+    "config_demo": {
+      "hide_card": false,
+      "background_color": "#b61924",
+      "background_image": "",
+      "background_position": "50% 50%",
+      "background_repeat": "no-repeat",
+      "background_size": "cover"
+    }
+  }
+
+);
+  var count_particles, stats, update;
+$(document).ready(function(){
+    $("#particles-js").hide();
+});
+</script>
+    {% block js %}{% endblock %}
+</html>

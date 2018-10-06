@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="{% static 'img/logo.png' %}" title="EthChatBot"  type="image/png" sizes="30x30">
+    
+<title>{% block pagetitle %}{% endblock %}</title>
+    {% block cssLink %}{% endblock %}
+</head>
+<body>
+    <div id="div-loading" class="div-loading">
+        <div id="div-loading-message">
+           
+            <div id="div-loading-text">
+                Loading.....
+            </div>
+        </div>		
+    </div>
+        <div id="div-body">
+                <h1 class="h1Header">.:: {% block pageName %}{% endblock %} ::.</h1>
+            <div id="div-left">
+                <div class="menu"> Login </div>
+                <div class="menu"> Create ETH Wallet </div>
+                <div class="menu"> Check Balance </div>
+                <div class="menu"> Send ETH </div>
+                <div class="menu"> Check Transactions </div>
+            </div>
+            <div id="div-right">
+                    
+                    {% block content %}{% endblock %}
+            </div>
+        </div>
+        
+                
+        
+    
+       
+              <style>
+                
+       
+</style>
+</body>
+
+    {% block jsLink %}{% endblock %}
+    
+<script>
+ 
+</script>
+    {% block js %}{% endblock %}
+</html>

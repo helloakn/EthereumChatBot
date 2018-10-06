@@ -1,11 +1,24 @@
 #from django.shortcuts import render
 from django.http import HttpResponse
 import json
-
+from django.template import loader
+import datetime
+from django.shortcuts import render
+#import render
 # Create your views here.
 def hello(request):
    text = """<h1>welcome to a lal haha my app !</h1>"""
    return HttpResponse(text)
+
+def home(request):
+    #template = loader.get_template('index.html')
+    
+    #rendering the template in HttpResponse
+    #return HttpResponse(template.render())
+    today = datetime.datetime.now().date()
+   
+    daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    return render(request, "index.html", {"today" : today, "days_of_week" : daysOfWeek})
 
 def hookck(request):
     f = open("/tmp/logfile.txt", "w+")
