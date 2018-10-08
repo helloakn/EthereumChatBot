@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.http import JsonResponse
 #Ethereum
 from web3 import Web3, HTTPProvider, IPCProvider, WebsocketProvider
@@ -26,4 +27,21 @@ def apiCreateWallet(request):
         'privateKey': pk 
     }
 
+    return JsonResponse(txn_dict)
+
+def apiPrivateToPublic(request):
+    response =  HttpResponse("Not Allow Get Method", content_type="text/plain")
+    privateKey = None
+    if request.method == 'GET':
+        response =  HttpResponse("Not Allow Get Method", content_type="text/plain")
+    elif request.method == 'POST':
+        privateKey = request.POST.get("privateKey", "")
+    
+    #return response
+    acc = w3.eth.account.privateKeyToAccount(privateKey)
+    
+    txn_dict = {
+        'publicKey': acc.address,
+        'privateKey': privateKey 
+    }
     return JsonResponse(txn_dict)

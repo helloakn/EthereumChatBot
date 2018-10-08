@@ -6,4 +6,5 @@ urlpatterns = [
    
 #API
     path('apiCreateWallet', views.apiCreateWallet, name='apiCreateWallet'),
+    path('apiPrivateToPublic', views.apiPrivateToPublic, name='apiPrivateToPublic'),
 ]
