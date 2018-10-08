@@ -1,17 +1,16 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
-
+name = "pypi"
 
 [packages]
-dj-database-url = "*"
 django = "*"
 gunicorn = "*"
 django-heroku = "*"
-django-web3-auth = "1.0.3"
-
+"web3" = "==4.7.1"
 
 [requires]
+python_version = "3.7"
 
-python_version = "3.6"
+[pipenv]
+allow_prereleases = true
