@@ -14,6 +14,7 @@ def apiCreateWallet(request):
     password = None
     if request.method == 'GET':
         response =  HttpResponse("Not Allow Get Method", content_type="text/plain")
+        return response
     elif request.method == 'POST':
         password = request.POST.get("password", "")
     
@@ -23,6 +24,7 @@ def apiCreateWallet(request):
     pk = pk.hex()
 
     txn_dict = {
+        'status': True,
         'publicKey': acct.address,
         'privateKey': pk 
     }
@@ -34,6 +36,7 @@ def apiPrivateToPublic(request):
     privateKey = None
     if request.method == 'GET':
         response =  HttpResponse("Not Allow Get Method", content_type="text/plain")
+        return response
     elif request.method == 'POST':
         privateKey = request.POST.get("privateKey", "")
     
@@ -41,7 +44,24 @@ def apiPrivateToPublic(request):
     acc = w3.eth.account.privateKeyToAccount(privateKey)
     
     txn_dict = {
+        'status': True,
         'publicKey': acc.address,
         'privateKey': privateKey 
+    }
+    return JsonResponse(txn_dict)
+
+def apiGetBalance(request):
+    response =  HttpResponse("Not Allow Get Method", content_type="text/plain")
+    wallet_private_key = None
+    if request.method == 'GET':
+        response =  HttpResponse("Not Allow Get Method", content_type="text/plain")
+        return response
+    elif request.method == 'POST':
+        wallet_private_key = request.POST.get("privateKey", "")
+    acc = w3.eth.account.privateKeyToAccount(wallet_private_key)
+    balance = w3.fromWei(w3.eth.getBalance(acc.address),'ether')
+    txn_dict = {
+        'status': True,
+        'balance': str(balance) + " ETH" 
     }
     return JsonResponse(txn_dict)
