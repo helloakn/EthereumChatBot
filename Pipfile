@@ -4,13 +4,25 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+<<<<<<< HEAD
 django = "*"
 gunicorn = "*"
 django-heroku = "*"
 "web3" = "==4.7.1"
+=======
+
+django = "*"
+gunicorn = "*"
+django-heroku = "*"
+
+>>>>>>> 4c60bd351c54a72b56b356baa0cb691186e7ac08
 
 [requires]
 python_version = "3.7"
 
+<<<<<<< HEAD
 [pipenv]
 allow_prereleases = true
+=======
+python_version = "3.6"
+>>>>>>> 4c60bd351c54a72b56b356baa0cb691186e7ac08

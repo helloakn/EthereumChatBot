@@ -1,9 +1,0 @@
-- name: restart service
-  action: systemctl restart {{ item }}
-  with_items:
-    - mariadb
-    - httpd
-    - vsftpd
-  register: enablerestartservice
-- debug:
-    var: enablerestartservice.stdout.split('\n')
