@@ -19,5 +19,6 @@ from django.urls import include,path
 
 urlpatterns = [
     path('', include('ETHAPP.urls')),
+    path('', include('API.urls')),
     path('admin/', admin.site.urls),
 ]
