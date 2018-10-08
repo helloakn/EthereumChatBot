@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'EthChatBot.urls'
+ROOT_URLCONF = 'BaseAPP.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'EthChatBot.wsgi.application'
+WSGI_APPLICATION = 'BaseAPP.wsgi.application'
 
 
 # Database

@@ -1,1 +1,1 @@
-web: gunicorn ethchatbot.wsgi
+web: gunicorn BaseAPP.wsgi
