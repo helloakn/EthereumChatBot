@@ -25,7 +25,7 @@ SECRET_KEY = 'ym*%_p&=n3e+c5qr70cfii1#ps!k4rn#n2@1pdr=ge+l3sg9@='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ethchatbot.herokuapp.com',]
+ALLOWED_HOSTS = ['ethchatbot.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -120,5 +120,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static_files'),
+    os.path.join(BASE_DIR, '/static_files/'),
 )
