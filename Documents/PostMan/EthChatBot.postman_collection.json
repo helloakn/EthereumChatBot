@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "90db48d3-fe2c-4e6e-9bfd-eaf5b3824450",
+		"name": "EthChatBot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "password",
+							"value": "1234qwerASDF!@#$",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ethchatbot.herokuapp.com/api/v1/apiCreateWallet",
+					"protocol": "https",
+					"host": [
+						"ethchatbot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"apiCreateWallet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "apiPrivateToPublic",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "privateKey",
+							"value": "0x5AB50B2A686E83A69562FC48CEAA49D66DD0F6936BC91AA4D82A0BD5DCCF9B9A",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ethchatbot.herokuapp.com/api/v1/apiPrivateToPublic",
+					"protocol": "https",
+					"host": [
+						"ethchatbot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"apiPrivateToPublic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "apiGetBalance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "privateKey",
+							"value": "0x5AB50B2A686E83A69562FC48CEAA49D66DD0F6936BC91AA4D82A0BD5DCCF9B9A",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ethchatbot.herokuapp.com/api/v1/apiGetBalance",
+					"protocol": "https",
+					"host": [
+						"ethchatbot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"apiGetBalance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "apiSendFund",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "wallet_private_key",
+							"value": "0x14e9c1c75459537d7a65918fef1e3dea657d64716160f08bde304bad30a80a37",
+							"type": "text"
+						},
+						{
+							"key": "wallet_address",
+							"value": "0x9D9F155261cE1e3b7f5cd7C3efbD6F13e9c4f5e5",
+							"type": "text"
+						},
+						{
+							"key": "toAddress",
+							"value": "0x91D4851165e09a491c23426C40417A4653caE4D0",
+							"type": "text"
+						},
+						{
+							"key": "amount_in_ether",
+							"value": "0.1",
+							"type": "text"
+						},
+						{
+							"key": "gas",
+							"value": "21000",
+							"type": "text"
+						},
+						{
+							"key": "gasPrice",
+							"value": "50000000000",
+							"type": "text"
+						},
+						{
+							"key": "data",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://ethchatbot.herokuapp.com/apiSendFund",
+					"protocol": "https",
+					"host": [
+						"ethchatbot",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"apiSendFund"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
